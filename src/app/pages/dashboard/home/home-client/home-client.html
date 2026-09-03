@@ -57,7 +57,8 @@
 
 
 <ng-template #advisor let-user>
-    <div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+    <div class="flex items-center gap-3 p-3  rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+        [class.bg-gray-100]="asesor()?._id === user._id"
         (click)="asesor.set(user)">
         <div class="avatar avatar-online-bottom">
             <div class="size-10 rounded-full">
