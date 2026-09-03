@@ -17,10 +17,10 @@ export const dashboarRoutes: Routes = [
         const m = await import('./home/home');
         return m.Home;
       } else if (userRole === ERole.User) {
-        const m_1 = await import('./home-client/home-client');
+        const m_1 = await import('./home/home-client/home-client');
         return m_1.HomeClient;
       } else if (userRole === ERole.Advisor) {
-        const m_2 = await import('./home-advisor/home-advisor');
+        const m_2 = await import('./home/home-advisor/home-advisor');
         return m_2.HomeAdvisor;
       } else {
         const m_3 = await import('./home/home');
@@ -39,10 +39,10 @@ export const dashboarRoutes: Routes = [
         const m = await import('./home/home');
         return m.Home;
       } else if (userRole === ERole.User) {
-        const m_1 = await import('./home-client/home-client');
+        const m_1 = await import('./home/home-client/home-client');
         return m_1.HomeClient;
       } else if (userRole === ERole.Advisor) {
-        const m_2 = await import('./home-advisor/home-advisor');
+        const m_2 = await import('./home/home-advisor/home-advisor');
         return m_2.HomeAdvisor;
       } else {
         const m_3 = await import('./home/home');
