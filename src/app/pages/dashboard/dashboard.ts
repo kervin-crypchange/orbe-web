@@ -1,10 +1,10 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, DOCUMENT, inject, input, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, inject, input, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { SIDE_MENU } from '@core/constants';
+import { SIDE_MENU_ADMIN, SIDE_MENU_ADVISOR, SIDE_MENU_USER } from '@core/constants';
 import { AuthActions } from '../auth/store/auth.actions';
 import { Store } from '@ngxs/store';
-import { EMessage } from '@core/enums';
+import { EMessage, ERole } from '@core/enums';
 import { ToastService } from '@core/services';
 import { form, FormField, FormRoot, min, required } from '@angular/forms/signals';
 import { httpResource } from '@angular/common/http';
@@ -12,6 +12,7 @@ import { IRateExchange } from '@core/interfaces';
 import { DashboardService } from '@core/services/dashboard';
 import { AuthSelectors } from '../auth/store/auth.selectors';
 import { Title } from '@angular/platform-browser';
+import { ISideMenu } from '@core/constants/side-menu';
 
 interface RateFormData {
   rate: number;
@@ -52,6 +53,7 @@ export class Dashboard {
   isAuthModalOpen = signal<boolean>(false);
   isFcmModalOpen = signal<boolean>(false);
 
+  erole =  ERole;
 
   private readonly url = `${API_URL}/v1`;
   private readonly store = inject(Store);
@@ -88,10 +90,20 @@ export class Dashboard {
     },
   );
 
-  protected menu = SIDE_MENU;
   protected isSidebarOpen = signal(false);
   protected isSubBarOpen = signal(false);
   protected userLogged = this.store.selectSnapshot(AuthSelectors.userLogged);
+
+  protected menu = computed(() => {
+    const menuMap: Record<string, ISideMenu[]> = {
+      [ERole.Admin]: SIDE_MENU_ADMIN,
+      [ERole.Advisor]: SIDE_MENU_ADVISOR,
+      [ERole.User]: SIDE_MENU_USER,
+    }
+
+    return menuMap[this.userLogged?.role] || [];
+  });
+
 
   constructor() {
     this.router.events.subscribe((event) => {

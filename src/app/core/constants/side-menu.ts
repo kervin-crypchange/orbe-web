@@ -1,10 +1,10 @@
-interface ISideMenu {
+export interface ISideMenu {
     label: string;
     icon: string;
     path: string;
 }
 
-export const SIDE_MENU: ISideMenu[] = [
+export const SIDE_MENU_ADMIN: ISideMenu[] = [
     {
         label: 'Inicio',
         icon: 'dashboard',
@@ -55,5 +55,21 @@ export const SIDE_MENU: ISideMenu[] = [
         icon: 'view_object_track',
         path: 'plans'
     },
-    
+
 ]
+
+export const SIDE_MENU_USER: ISideMenu[] = [
+    {
+        label: 'Inicio',
+        icon: 'dashboard',
+        path: '.'
+    },
+];
+
+export const SIDE_MENU_ADVISOR: ISideMenu[] = [
+    {
+        label: 'Inicio',
+        icon: 'dashboard',
+        path: '.'
+    },
+];
