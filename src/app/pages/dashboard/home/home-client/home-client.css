@@ -1,0 +1,4 @@
+@import "tailwindcss";
+.section-title{
+    @apply text-gray-600 mt-6 text-lg;
+}

@@ -42,6 +42,8 @@ export interface IUserBase {
   connectStatus: TConnectStatus;
   termAndCond: boolean;
   lastConnect: Date;
+  language: string[];
+  status: EStatus;
   createdAt: Date;
   updatedAt: Date;
   deviceToken: string;
