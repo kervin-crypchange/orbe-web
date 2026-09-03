@@ -22,6 +22,7 @@ export class HomeClient {
   protected limit = signal(ITEM_PER_PAGE);
   protected page = signal(1);
   protected search = signal<string>('');
+  protected asesor = signal<IAdvisor | null>(null);
 
   protected resource = httpResource<IResponse<IAdvisor>>(() => ({
     url: this.url,

@@ -17,14 +17,33 @@
         }
     </div>
     <div class="col-span-2 bg-white p-4 rounded-lg shadow-md">
-        <h5>Chat</h5>
+        @if (asesor()) {
+        <div class="flex items-center gap-4 mb-2">
+            <div class="avatar">
+                <div class="size-32 rounded-md">
+                    <img [src]="asesor()?.avatar" alt="avatar" />
+                </div>
+            </div>
+            <div class="flex flex-col grow">
+                <h5 class="text-3xl font-bold">{{asesor()!.advisor.alias}}</h5>
+                <p>{{asesor()!.advisor.category}}</p>
+            </div>
+            <div class="mr-10">
+                <span class="text-4xl">{{asesor()!.rateAvg}}</span>
+                <span class="icon-[tabler--star-filled] size-8 text-yellow-300 ms-1"></span>
+            </div>
+        </div>
+        <p class="text-gray-600 mt-8">Descripción</p>
+        <p>{{asesor()!.advisor.description}}</p>
+        <p class="text-gray-600 mt-8">Comentarios</p>
+        }
     </div>
 </div>
 
 
 <ng-template #advisor let-user>
-    <div
-        class="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+    <div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+        (click)="asesor.set(user)">
         <div class="avatar avatar-online-bottom">
             <div class="size-10 rounded-full">
                 <img [src]="user.avatar" [alt]="user.name" />
