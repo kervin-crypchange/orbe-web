@@ -1,12 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { httpResource } from '@angular/common/http';
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
+import { debounce, form, FormField, FormRoot } from '@angular/forms/signals';
 import { ITEM_PER_PAGE } from '@core/constants';
 import { IAdvisor, IResponse } from '@core/interfaces';
-
+interface SearchData {
+  query: string;
+}
+const searchModel = signal<SearchData>({
+  query: '',
+});
 @Component({
   selector: 'app-home-client',
-  imports: [CommonModule],
+  imports: [CommonModule, FormRoot, FormField],
   templateUrl: './home-client.html',
   styleUrl: './home-client.css',
 })
@@ -25,4 +31,15 @@ export class HomeClient {
       search: this.search() ?? '',
     },
   }));
+
+    protected readonly searchForm = form(searchModel, (schemaPath) => {
+      debounce(schemaPath.query, 500);
+    });
+  
+     constructor() {
+      effect(() => {
+        const currentQuery = this.searchForm().value().query;
+        this.search.set(currentQuery);
+      });
+    }
 }

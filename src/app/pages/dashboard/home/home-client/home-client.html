@@ -1,6 +1,16 @@
 <div class="grid grid-cols-3 gap-4" [style.height]="availHeight+ 'px'">
     <div class="flex flex-col bg-white p-4 rounded-lg shadow-md gap-2 overflow-y-auto">
-        <h5>Asesores</h5>
+        <div class="flex items-center justify-between">
+            <h5>Asesores</h5>
+            <div class="input input-sm w-fit">
+                <span class="icon-[tabler--search] text-base-content/80 my-auto me-3 size-4 shrink-0"></span>
+                <label class="sr-only" for="table-column-actions-search"></label>
+                <form [formRoot]="searchForm">
+                    <input class="grow" type="search" placeholder="Search for items" id="table-column-actions-search"
+                        [formField]="searchForm.query" />
+                </form>
+            </div>
+        </div>
         @for (item of resource.value()!.results; track $index) {
         <ng-container [ngTemplateOutlet]="advisor" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
 
