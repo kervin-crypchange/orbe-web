@@ -23,6 +23,12 @@ export class HomeClient {
   protected page = signal(1);
   protected search = signal<string>('');
   protected asesor = signal<IAdvisor | null>(null);
+  protected readonly wompiPublicKey = WOMPI_PUBLIC_KEY;
+  protected readonly wompiIntegrity = WOMPI_INTEGRITY;
+  protected readonly paymentAmount = signal(5000);
+  protected readonly paymentReference = signal(`ORBE-${Date.now()}`);
+  protected readonly paymentSignature = signal('');
+  protected readonly paymentRedirectUrl = `${window.location.origin}/dashboard/home`;
 
   protected resource = httpResource<IResponse<IAdvisor>>(() => ({
     url: this.url,
@@ -42,6 +48,23 @@ export class HomeClient {
       const currentQuery = this.searchForm().value().query;
       this.search.set(currentQuery);
     });
+
+    effect(() => {
+      const amountInCents = this.paymentAmount() * 100;
+      this.createPaymentSignature(amountInCents, this.paymentReference());
+    });
+  }
+
+  protected updatePaymentAmount(event: Event): void {
+    const value = Number((event.target as HTMLInputElement).value);
+    this.paymentAmount.set(Number.isFinite(value) && value >= 5000 ? Math.floor(value) : 5000);
+  }
+
+  private async createPaymentSignature(amountInCents: number, reference: string): Promise<void> {
+    const data = new TextEncoder().encode(`${reference}${amountInCents}COP${WOMPI_INTEGRITY}`);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    this.paymentSignature.set(hashArray.map((byte) => byte.toString(16).padStart(2, '0')).join(''));
   }
   
 }
