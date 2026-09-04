@@ -1,6 +1,7 @@
 <div class="min-h-screen bg-gray-100 flex relative top-0">
   <aside id="sidebar"
     class="fixed inset-y-0 left-0 z-50 w-[90vw] md:w-72 bg-white text-white transform transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:inset-0 shadow-md"
+    [class.hidden]="userLogged!.role !== erole.Admin"
     [class.-translate-x-full]="!isSidebarOpen()" [class.translate-x-0]="isSidebarOpen()">
     <div class="flex items-center justify-between lg:justify-center h-16">
       <img src="images/logos/orbe/logotipo.png" alt="logo" class="w-2/5 my-auto" />
@@ -55,9 +56,19 @@
           </button>
 
           @if(userLogged.wallet){
-          <p class="text-sm text-gray-600 inline-flex">
-            Disponible: {{userLogged.wallet.balance | currency}}
-          </p>
+
+          <div class="space-x-1.5">
+            <button type="button" class="btn btn-primary btn-sm" aria-haspopup="dialog" aria-expanded="false" aria-controls="basic-modal" data-overlay="#basic-modal" > 
+            <span class="material-symbols-outlined" style="font-size: 20px">
+                currency_exchange
+              </span>
+              Recarga saldo  
+            </button>
+
+            <p class="text-sm text-gray-600 inline-flex gap-2">
+              Disponible: {{userLogged.wallet.balance | currency}}
+            </p>
+          </div>
           }
 
           <div class="dropdown relative inline-flex">
@@ -119,7 +130,7 @@
       </div>
     </div>
 
-    <main class="flex-1 min-h-screen bg-gray-100 p-6 dashboard-main">
+    <main class="flex-1 min-h-screen bg-gray-100 p-6 dashboard-main container mx-auto">
       <h3 class="text-2xl font-medium mb-3.5 tracking-wider text-gray-600 border-b border-gray-200">
         {{ pageTitle.getTitle() }}
       </h3>

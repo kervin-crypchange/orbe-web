@@ -17,7 +17,7 @@ const searchModel = signal<SearchData>({
   styleUrl: './home-client.css',
 })
 export class HomeClient {
-  availHeight = screen.availHeight-(screen.availHeight*0.3);
+  availHeight = screen.availHeight - (screen.availHeight * 0.3);
   private readonly url = `${API_URL}/v1/users/app/advisors`;
   protected limit = signal(ITEM_PER_PAGE);
   protected page = signal(1);
@@ -33,14 +33,15 @@ export class HomeClient {
     },
   }));
 
-    protected readonly searchForm = form(searchModel, (schemaPath) => {
-      debounce(schemaPath.query, 500);
+  protected readonly searchForm = form(searchModel, (schemaPath) => {
+    debounce(schemaPath.query, 500);
+  });
+
+  constructor() {
+    effect(() => {
+      const currentQuery = this.searchForm().value().query;
+      this.search.set(currentQuery);
     });
+  }
   
-     constructor() {
-      effect(() => {
-        const currentQuery = this.searchForm().value().query;
-        this.search.set(currentQuery);
-      });
-    }
 }

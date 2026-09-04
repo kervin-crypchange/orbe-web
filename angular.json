@@ -65,7 +65,13 @@
                 "API_URL": "'https://api.orbeapp.net'",
                 "API_SOCKET": "'https://wss.orbeapp.net'",
                 "APP_VERSION": "'1.0.0'",
-                "ENV": "'production'"
+                "ENV": "'production'",
+                "WOMPI_PUBLIC_KEY": "'pub_prod_8EOPXgPdw9nsfSGBjnGS3n6rnwWey5y1'",
+                "WOMPI_PRIVATE_KEY": "'prv_prod_OiJZKdDjD2sBhJfSXLpm3nxDqeez5VNI'",
+                "WOMPI_EVENT": "'prod_events_6LQ7mnzPgHbU3lvD3opdNE1rSuLmiFjk'",
+                "WOMPI_INTEGRITY": "'prod_integrity_0Jilhxdrf1T1sJffFBDvY9g7DJKCO04w'"
+
+               
               }
             },
             "development": {
@@ -82,7 +88,11 @@
                 "API_URL": "'http://localhost:3000'",
                 "API_SOCKET": "'https://wss.orbeapp.net'",
                 "APP_VERSION": "'1.0.0'",
-                "ENV": "'development'"
+                "ENV": "'development'",
+                "WOMPI_PUBLIC_KEY": "'pub_test_W2AG0iuu4cMtL2w64njejkl5lLj4aVxL'",
+                "WOMPI_PRIVATE_KEY": "'prv_test_p1UCIxTuABmDFbUtVw2Xvs5i7Ns8PPzc'",
+                "WOMPI_EVENT": "'test_events_yPkClYv8sZPiYFrdp43xV2HIUrup2s8F'",
+                "WOMPI_INTEGRITY": "'test_integrity_OkY0VOFyFpVtRDCdU617aS8uTlwwqKAK'"                
               }
             }
           },
