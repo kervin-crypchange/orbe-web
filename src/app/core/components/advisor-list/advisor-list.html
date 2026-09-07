@@ -339,7 +339,7 @@
                   <app-file-upload label="Foto perfil" (fileSelected)="uploadFile($event, 'avatar')"
                     acceptedFiles="image/*" />
                   @if (form.avatar().touched() && form.avatar().invalid()) {
-                  <ul class="text-xs text-error mt-1 file-error">
+                  <ul class="text-xs text-error mt-1 ">
                     @for (error of form.avatar().errors(); track error) {
                     <li>{{ error.message }}</li>
                     }
@@ -350,7 +350,7 @@
                   <app-file-upload label="DNI" (fileSelected)="uploadFile($event, 'dniImage')"
                     acceptedFiles="image/*" />
                   @if (form.dniImage().touched() && form.dniImage().invalid()) {
-                  <ul class="text-xs text-error mt-1 file-error">
+                  <ul class="text-xs text-error mt-1">
                     @for (error of form.dniImage().errors(); track error) {
                     <li>{{ error.message }}</li>
                     }
@@ -361,7 +361,7 @@
                   <app-file-upload label="Video" (fileSelected)="uploadFile($event, 'videoIntro')"
                     acceptedFiles="video/*" helpText="Elige un video de hasta 30 segundos" />
                   @if (form.videoIntro().touched() && form.videoIntro().invalid()) {
-                  <ul class="text-xs text-error mt-1 file-error">
+                  <ul class="text-xs text-error mt-1">
                     @for (error of form.videoIntro().errors(); track error) {
                     <li>{{ error.message }}</li>
                     }
