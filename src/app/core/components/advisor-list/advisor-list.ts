@@ -99,7 +99,7 @@ export class AdvisorList {
       required(v.name, { message: 'Name is required' });
       required(v.lastName, { message: 'Last name is required' });
       required(v.email, { message: 'Email is required' });
-      email(v.email, {message: 'Formato de email inválido'});
+      email(v.email, { message: 'Formato de email inválido' });
       required(v.phone, { message: 'Phone is required' });
       required(v.country, { message: 'Country is required' });
       required(v.dob, { message: 'Date of birth is required' });
@@ -236,20 +236,21 @@ export class AdvisorList {
 
   uploadFile(file: File | null, type: string) {
     if (!file) return;
-    this.formData.set(type, file);
+    formModel.set({ ...formModel(), [type]: file.name });
+
+    this.formData.set(type, file, file.name);
 
   }
 
   private async createAdvisor(data: FormAdvisor): Promise<void> {
     console.log('Create Advisor', data);
+    const {avatar,dniImage,videoIntro, ...body} = data;
 
-    /*  const { _id, ...advisorData } = data;
-     const payload = {
-       ...advisorData,
+    /*  const payload = {
+       ...body,
        role: ERole.Advisor,
-     }; */
-
-    /* this.service.create(payload).subscribe(() => {
+     }; 
+      this.service.create(payload).subscribe(() => {
       this.toast.show(EMessage.Successful);
       this.closeModal();
       this.resource.reload();
