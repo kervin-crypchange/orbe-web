@@ -1,3 +1,4 @@
+export { Wallet } from "./wallet/wallet";
 export { Discover } from "./discover/discover";
 export { DownloadApp } from "./download-app/download-app";
 export { AnswerPath } from "./answer-path/answer-path";
