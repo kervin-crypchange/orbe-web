@@ -1,20 +1,13 @@
 <div class="bg-slate-50 text-slate-800 font-sans antialiased h-screen overflow-auto">
   <!-- Header / Navbar -->
-  <header class="top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-2xs z-50">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <img src="images/logos/orbe/logotipo.png" alt="logo" srcset="" class="w-32 cursor-pointer" [routerLink]="['.']" />
-      <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
-        <a href="#caracteristicas" class="hover:text-green-800 transition-colors">Home</a>
-        <a [routerLink]="['faq']" class="hover:text-green-800 transition-colors">Preguntas frecuentes</a>
-        <a routerLink="." fragment="about-us" class="hover:text-green-800 transition-colors">¿Quienes somos?</a>
-      </nav>
-      <div class="flex items-center gap-4">
-        <a [routerLink]="goTo"
-          class="hidden sm:inline-block font-medium text-slate-600 hover:text-green-800 transition-colors">{{
-          accessButtonTitle }}</a>
-      </div>
-    </div>
-  </header>
+      <nav class="border-b border-emerald-100/40 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="font-serif-elegant text-2xl tracking-widest text-emerald-950">ORBE</span>
+            <a href="#contacto" class="hidden md:inline-block bg-emerald-950 text-stone-50 hover:bg-emerald-900 px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition-all shadow-sm">
+                Reservar Sesión
+            </a>
+        </div>
+    </nav>
 
   <router-outlet />
 
