@@ -1,7 +1,7 @@
 import { httpResource } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { IAdvisor } from '@core/interfaces';
-import { AnswerPath, Asesores, Discover, DownloadApp, Header, Wallet, WhatsIs } from '@core/landing/sections';
+import { AnswerPath, Asesores, Comments, Discover, DownloadApp, Header, Wallet, WhatsIs } from '@core/landing/sections';
 
 interface Steps {
   icon: string;
@@ -10,7 +10,7 @@ interface Steps {
 }
 @Component({
   selector: 'app-home',
-  imports: [Header, WhatsIs, AnswerPath, DownloadApp, Discover, Wallet, Asesores],
+  imports: [Header, WhatsIs, AnswerPath, DownloadApp, Discover, Wallet, Asesores, Comments],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

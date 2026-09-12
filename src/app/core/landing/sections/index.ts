@@ -1,3 +1,4 @@
+export { Comments } from "./comments/comments";
 export { Asesores } from "./asesores/asesores";
 export { Wallet } from "./wallet/wallet";
 export { Discover } from "./discover/discover";
