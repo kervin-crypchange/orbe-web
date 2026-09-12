@@ -13,7 +13,9 @@
                 <div>
                     <p class="text-sm italic">"{{item.comment}}"</p>
                     <p class="mt-8">{{item.name}}</p>
-                    <span class="icon-[tabler--star-filled] size-8 shrink-0 text-yellow-300"></span>
+                    @for (item of [1,1,1,1,1]; track $index) {
+                        <span class="icon-[tabler--star-filled] size-4 shrink-0 text-yellow-300"></span>
+                    }
                 </div>
             </div>
             }
