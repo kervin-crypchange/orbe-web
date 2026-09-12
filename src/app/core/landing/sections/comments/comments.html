@@ -1,8 +1,22 @@
-<div class="flex flex-col md:flex-row max-w-7xl mx-auto items-center justify-between py-2 md:py-6">
-    <div>
+<div class="flex flex-col md:flex-row max-w-7xl mx-auto items-center justify-between py-2 md:py-6 gap-8">
+    <div class="flex-1 ">
         <p class="text-3xl font-serif-elegant">Lo que dicen quienes ya consultaron Orbe</p>
-        <p class="mt-1 mb-4">historias de personas que encontraron respuestas.</p>
-        <div></div>
+        <p class="mt-1 mb-4">Historias de personas que encontraron respuestas.</p>
+        <div class="flex flex-row gap-4">
+            @for (item of commensts; track $index) {
+            <div class="flex bg-gray-100 rounded-lg p-4 gap-4">
+                <div class="avatar">
+                    <div class="size-14 rounded-full">
+                        <img [src]="item.avatar" alt="avatar" />
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm italic">"{{item.comment}}"</p>
+                    <p class="mt-8">{{item.name}}</p>
+                </div>
+            </div>
+            }
+        </div>
     </div>
     <div class="bg-indigo-50 p-6 rounded w-3/12">
         <p class="text-2xl/tight font-serif-elegant w-full md:w-2/3 ">Tu privacidad es nuestra prioridad.</p>
